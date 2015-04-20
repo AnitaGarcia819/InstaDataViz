@@ -25,7 +25,7 @@ data = json.loads(file)
 latitude = []
 longitude =[]
 
-number_of_tags = latitude.amount()
+
 
 for data in data["data"]:
 	if(data['location'] != None):
@@ -33,6 +33,8 @@ for data in data["data"]:
 		latitude.append(latitudePoint)
 		longitudePoint = data['location']['longitude']
 		longitude.append(longitudePoint)
+
+number_of_tags = latitude.amount()
 
 def get_marker_color(number_of_tags):
     # Returns green for small earthquakes, yellow for moderate
