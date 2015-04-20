@@ -19,6 +19,8 @@ data = json.loads(file)
 
 for data in data["data"]:
 	if(data['location'] != None):
-		variable = data['location']['latitude']
-		print variable
-
+		variable1 = data['location']['latitude']
+		variable2 = data['location']['longitude']
+		print variable1
+		print "asdfasfas"
+		print variable2
