@@ -25,8 +25,6 @@ data = json.loads(file)
 latitude = []
 longitude =[]
 
-
-
 for data in data["data"]:
 	if(data['location'] != None):
 		latitudePoint = data['location']['latitude']
@@ -34,11 +32,11 @@ for data in data["data"]:
 		longitudePoint = data['location']['longitude']
 		longitude.append(longitudePoint)
 
-number_of_tags = latitude.amount()
+number_of_tags = len(latitude)
 
 def get_marker_color(number_of_tags):
-    # Returns green for small earthquakes, yellow for moderate
-    #  earthquakes, and red for significant earthquakes.
+    # Returns green for smaller amounts of tags, yellow for moderate
+    #  amounts of tags, and red for significant tags.
     if number_of_tags < 3.0:
         return ('go')
     elif number_of_tags < 5.0:
@@ -57,14 +55,14 @@ map.drawmeridians(np.arange(0, 360, 30))
 map.drawparallels(np.arange(-90, 90, 30))
  
 min_marker_size = 2.25
-for lon, lat, mag in zip(lons, lats, magnitudes):
+for lon, lat in zip(longitude, latitude):
     x,y = map(lon, lat)
-    msize = mag * min_marker_size
-    marker_string = get_marker_color(mag)
+    msize = number_of_tags* min_marker_size
+    marker_string = get_marker_color(number_of_tags)
     map.plot(x, y, marker_string, markersize=msize)
     
-title_string = "Earthquakes of Magnitude 1.0 or Greater\n"
-title_string += "%s through %s" % (timestrings[-1][:10], timestrings[0][:10])
+title_string = "#" + tag_here +" currently trending\n"
+#title_string += "%s through %s" % (timestrings[-1][:10], timestrings[0][:10])
 plt.title(title_string)
  
 plt.show()
