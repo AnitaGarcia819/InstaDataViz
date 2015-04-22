@@ -49,6 +49,6 @@ number_of_tags1 = len(latitude_1)
 number_of_tags2 = len(latitude_2)
 print latitude_1
 print longitude_1
-TagSearch.plotMap(longitude_1, latitude_1, number_of_tags1, firstTag)
-TagSearch.plotMap(longitude_2, latitude_2, number_of_tags2, secondTag)
+TagSearch.plotMap(longitude_1, latitude_1, number_of_tags1, longitude_2, latitude_2, number_of_tags2, firstTag, secondTag)
+TagSearch.plotMap(longitude_2, latitude_2, number_of_tags2, secondTag, 2)
 

@@ -43,17 +43,15 @@ def gatherLongitude(tag):
     return longitude
 
 
-def get_marker_color(number_of_tags):
+def get_marker_color(tagColor):
     # Returns green for smaller amounts of tags, yellow for moderate
     #  amounts of tags, and red for significant tags.
-    if number_of_tags < 3.0:
+    if tagColor == 1:
         return ('go')
-    elif number_of_tags < 5.0:
-        return ('yo')
     else:
         return ('ro')
 
-def plotMap(longitude, latitude, number_of_tags, tag):
+def plotMap(longitude1, latitude1, number_of_tags1, longitude2, latitude2, number_of_tags2, tag1, tag2):
     map = Basemap(projection='robin', resolution = 'l', area_thresh = 1000.0,
               lat_0=0, lon_0=-130)
     map.drawcoastlines()
@@ -65,13 +63,19 @@ def plotMap(longitude, latitude, number_of_tags, tag):
     map.drawparallels(np.arange(-90, 90, 30))
 
     min_marker_size = 2.25
-    for lon, lat in zip(longitude, latitude):
+    for lon, lat in zip(longitude1, latitude1):
         x,y = map(lon, lat)
-        msize = number_of_tags* min_marker_size
-        marker_string = get_marker_color(number_of_tags)
+        msize = number_of_tags1 * min_marker_size
+        marker_string = get_marker_color(1)
         map.plot(x, y, marker_string, markersize=msize)
 
-    title_string = "#" + tag +" currently trending\n"
+    for lon, lat in zip(longitude2, latitude2):
+        x,y = map(lon, lat)
+        msize = number_of_tags2* min_marker_size
+        marker_string = get_marker_color(2)
+        map.plot(x, y, marker_string, markersize=msize)
+
+    title_string = "#" + tag1 +" and #" + tag2 + " currently trending\n"
     #title_string += "%s through %s" % (timestrings[-1][:10], timestrings[0][:10])
     plt.title(title_string)
 
