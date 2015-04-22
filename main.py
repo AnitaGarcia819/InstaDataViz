@@ -19,14 +19,14 @@ longitude_1= []
 latitude_2= []
 longitude_2= []
 
+
 for x in range(1): #Testing with '1', change to 30 
 	points = TagSearch.gatherLatitude(firstTag)
-	latitude_1.appened(points) 
-    
-    #longitude_1.appened(TagSearch.gatherLongitude(firstTag))
-    #latitude_2.appened(TagSearch.gatherLatitude(secondTag)) 
-    #longitude_2.appened(TagSearch.gatherLongitude(secondTag))
-    #time.sleep(5)
+	latitude_1.append(points)
+	longitude_1.append(TagSearch.gatherLongitude(firstTag))
+	latitude_2.append(TagSearch.gatherLatitude(secondTag))
+	longitude_2.append(TagSearch.gatherLongitude(secondTag))
+	time.sleep(5)
     
 
 number_of_tags1 = len(latitude_1)

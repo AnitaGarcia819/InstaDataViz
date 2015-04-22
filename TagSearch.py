@@ -19,18 +19,15 @@ import numpy as np
 
 
 def gatherLatitude(tag):
-	file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
-	data = json.loads(file)
+    file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
+    data = json.loads(file)
 
-	latitude = []
+    latitude = []
 
-	for data in data["data"]:
-		if(data['location'] != None):
-			latitudePoint = data['location']['latitude']
-			latitude.append(latitudePoint)
-    return latitude
-	
-
+    for data in data["data"]:
+        if data ['location'] != None:
+            latitudePoint = data['location']['latitude']
+            latitude.append(latitudePoint)
 def gatherLongitude(tag):
     file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
     data = json.loads(file)
