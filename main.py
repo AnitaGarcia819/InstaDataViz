@@ -19,19 +19,36 @@ longitude_1= []
 latitude_2= []
 longitude_2= []
 
+ #Appends latitude into "latitude_1"
 
 for x in range(1): #Testing with '1', change to 30 
 	points = TagSearch.gatherLatitude(firstTag)
-	latitude_1.append(points)
-	longitude_1.append(TagSearch.gatherLongitude(firstTag))
-	latitude_2.append(TagSearch.gatherLatitude(secondTag))
-	longitude_2.append(TagSearch.gatherLongitude(secondTag))
-	time.sleep(5)
+	for data in points:
+		latitude_1.append(data)
+
+for x in range(1): #Testing with '1', change to 30 
+	points = TagSearch.gatherLongitude(firstTag)
+	for data in points:
+		longitude_1.append(data)
+
+for x in range(1): #Testing with '1', change to 30 
+	points = TagSearch.gatherLatitude(secondTag)
+	for data in points:
+		latitude_2.append(data)
+
+for x in range(1): #Testing with '1', change to 30 
+	points = TagSearch.gatherLongitude(secondTag)
+	for data in points:
+		longitude_2.append(data)
+	#latitude_2.append(TagSearch.gatherLatitude(secondTag))
+	#longitude_2.append(TagSearch.gatherLongitude(secondTag))
+	#time.sleep(5)
     
 
 number_of_tags1 = len(latitude_1)
 number_of_tags2 = len(latitude_2)
-
-print number_of_tags1
-print number_of_tags1
+print latitude_1
+print longitude_1
+TagSearch.plotMap(longitude_1, latitude_1, number_of_tags1, firstTag)
+TagSearch.plotMap(longitude_2, latitude_2, number_of_tags2, secondTag)
 
