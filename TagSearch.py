@@ -18,21 +18,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-tag_here = raw_input("Enter Tag: ")
-file = urlopen("https://api.instagram.com/v1/tags/"+ tag_here+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
-data = json.loads(file)
+def gatherData(tag_here):
+	file = urlopen("https://api.instagram.com/v1/tags/"+ tag_here+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
+	data = json.loads(file)
 
-latitude = []
-longitude =[]
+	latitude = []
+	longitude =[]
 
-for data in data["data"]:
-	if(data['location'] != None):
-		latitudePoint = data['location']['latitude']
-		latitude.append(latitudePoint)
-		longitudePoint = data['location']['longitude']
-		longitude.append(longitudePoint)
+	for data in data["data"]:
+		if(data['location'] != None):
+			latitudePoint = data['location']['latitude']
+			latitude.append(latitudePoint)
+			longitudePoint = data['location']['longitude']
+			longitude.append(longitudePoint)
 
-number_of_tags = len(latitude)
+	number_of_tags = len(latitude)
 
 def get_marker_color(number_of_tags):
     # Returns green for smaller amounts of tags, yellow for moderate
@@ -43,7 +43,7 @@ def get_marker_color(number_of_tags):
         return ('yo')
     else:
         return ('ro')
-
+'''
 map = Basemap(projection='robin', resolution = 'l', area_thresh = 1000.0,
               lat_0=0, lon_0=-130)
 map.drawcoastlines()
@@ -53,17 +53,18 @@ map.bluemarble()
 map.drawmapboundary()
 map.drawmeridians(np.arange(0, 360, 30))
 map.drawparallels(np.arange(-90, 90, 30))
- 
+
 min_marker_size = 2.25
 for lon, lat in zip(longitude, latitude):
     x,y = map(lon, lat)
     msize = number_of_tags* min_marker_size
     marker_string = get_marker_color(number_of_tags)
     map.plot(x, y, marker_string, markersize=msize)
-    
+
 title_string = "#" + tag_here +" currently trending\n"
 #title_string += "%s through %s" % (timestrings[-1][:10], timestrings[0][:10])
 plt.title(title_string)
- 
+
 plt.show()
 
+'''
