@@ -8,7 +8,30 @@
 import TagSearch
 import time
 
-tag_here = raw_input("Enter Tag: ")
-for x in range(30):
-    TagSearch.gatherData(tag_here)
-    time.sleep(5)
+firstTag= raw_input("Enter Tag: ")
+secondTag= raw_input("Enter Tag: ")
+
+#Stores data for first tag
+latitude_1= []
+longitude_1= []
+
+#Stores data for second tag
+latitude_2= []
+longitude_2= []
+
+for x in range(1): #Testing with '1', change to 30 
+	points = TagSearch.gatherLatitude(firstTag)
+	latitude_1.appened(points) 
+    
+    #longitude_1.appened(TagSearch.gatherLongitude(firstTag))
+    #latitude_2.appened(TagSearch.gatherLatitude(secondTag)) 
+    #longitude_2.appened(TagSearch.gatherLongitude(secondTag))
+    #time.sleep(5)
+    
+
+number_of_tags1 = len(latitude_1)
+number_of_tags2 = len(latitude_2)
+
+print number_of_tags1
+print number_of_tags1
+
