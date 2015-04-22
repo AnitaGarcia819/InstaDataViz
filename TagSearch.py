@@ -18,21 +18,32 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def gatherData(tag_here):
-	file = urlopen("https://api.instagram.com/v1/tags/"+ tag_here+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
+def gatherLatitude(tag):
+	file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
 	data = json.loads(file)
 
 	latitude = []
-	longitude =[]
 
 	for data in data["data"]:
 		if(data['location'] != None):
 			latitudePoint = data['location']['latitude']
 			latitude.append(latitudePoint)
-			longitudePoint = data['location']['longitude']
-			longitude.append(longitudePoint)
+    return latitude
+	
 
-	number_of_tags = len(latitude)
+def gatherLongitude(tag):
+    file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
+    data = json.loads(file)
+
+    longitude =[]
+
+    for data in data["data"]:
+        if(data['location'] != None):
+            longitudePoint = data['location']['longitude']
+            longitude.append(longitudePoint)
+    return longitude
+
+
 
 def get_marker_color(number_of_tags):
     # Returns green for smaller amounts of tags, yellow for moderate
