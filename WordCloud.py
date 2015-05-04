@@ -54,16 +54,24 @@ def openEastCoastCloud():
 
 def openWestCoastCloud():
     TEXT = storesTags(34,118) #Los Angeles
-    TEXT += storesTags(37,122) # San Francisco 
+    TEXT += ' ' + storesTags(37,122) # San Francisco 
+    TEXT += ' ' + storesTags(47,122) #Seattle 
 
     tags = make_tags(get_tag_counts(TEXT), maxsize=80)
-
     create_tag_image(tags, 'cloud_large.png', size=(900, 600), fontname='Lobster')
 
     import webbrowser
     webbrowser.open('cloud_large.png') # see results
 
-openWestCoastCloud()
+def testCloud():
+    TEXT = storesTags(34,118) #Los Angeles
+    print "L.A.:" + TEXT
+    TEXT += storesTags(37,122) # San Francisco 
+    print "S.F: " + TEXT
+    TEXT += ' ' + storesTags(47,122) #Seattle 
+    print "Seattle: " + TEXT
+
+
 
 
 
