@@ -4,51 +4,65 @@
 # Description: This program will run the
 # InstaDataViz program. It will allow
 # the user select which feature
-# of the program the user would like to select.
+# of the program the user would like to selecc
+# through the GUI
+
 import TagSearch
-import time
+#import wx
 
-firstTag= raw_input("Enter Tag: ")
-secondTag= raw_input("Enter Tag: ")
+TagSearch.showTagsonMap()
 
-#Stores data for first tag
-latitude_1= []
-longitude_1= []
 
-#Stores data for second tag
-latitude_2= []
-longitude_2= []
+class Example(wx.Frame):
+           
+    def __init__(self, *args, **kw):
+        super(Example, self).__init__(*args, **kw) 
+        
+        self.InitUI()
+                
+    def InitUI(self):
+    	# Creates buttons 
+        self.button1 = wx.Button(self, id=-1, label='Tag Location Comparison',pos=(22, 8), size=(175, 28))
+        self.button2 = wx.Button(self, id=-1, label='Popular Pictures',pos=(22, 38), size=(175, 28))
+        self.button3 = wx.Button(self, id=-1, label='East Coast Word Cloud',pos=(22, 68), size=(175, 28))
+        self.button4 = wx.Button(self, id=-1, label='West Coast Word Cloud', pos=(22, 98), size=(175,28))
+   
+        self.button9 = wx.Button(self, id=-1, label='Close' ,pos=(22, 228), size=(175,28))
+        
+        # Adds functionality to buttons
+        self.button1.Bind(wx.EVT_BUTTON, self.locationComparison)
+        self.button2.Bind(wx.EVT_BUTTON, self.PopularPictures)
+        self.button3.Bind(wx.EVT_BUTTON, self.EastCoast)
+        self.button4.Bind(wx.EVT_BUTTON, self.WestCoast)
 
- #Appends latitude into "latitude_1"
+    	self.button9.Bind(wx.EVT_BUTTON, self.OnQuitApp)
 
-for x in range(1): #Testing with '1', change to 30 
-	points = TagSearch.gatherLatitude(firstTag)
-	for data in points:
-		latitude_1.append(data)
-
-for x in range(1): #Testing with '1', change to 30 
-	points = TagSearch.gatherLongitude(firstTag)
-	for data in points:
-		longitude_1.append(data)
-
-for x in range(1): #Testing with '1', change to 30 
-	points = TagSearch.gatherLatitude(secondTag)
-	for data in points:
-		latitude_2.append(data)
-
-for x in range(1): #Testing with '1', change to 30 
-	points = TagSearch.gatherLongitude(secondTag)
-	for data in points:
-		longitude_2.append(data)
-	#latitude_2.append(TagSearch.gatherLatitude(secondTag))
-	#longitude_2.append(TagSearch.gatherLongitude(secondTag))
-	#time.sleep(5)
+        # GUI Aesthetics 
+        self.SetSize((220, 300))
+        self.SetBackgroundColour("blue")
+        self.SetTitle("Speech Recognition")
+        self.Center()
+        self.Show(True)
     
+    #Functions that are called when buttons are clicked on    
+    def locationComparison(self, event):
+    	TagSearch.showTagsonMap()
+    def PopularPictures(self, event):
+        PopularPictures.openWebPage()
+	def EastCoast(self, event):
+        
+	def WestCoast(self, event):
+    def OnQuitApp(self, event):
+    	self.Close()
 
-number_of_tags1 = len(latitude_1)
-number_of_tags2 = len(latitude_2)
-print latitude_1
-print longitude_1
-TagSearch.plotMap(longitude_1, latitude_1, number_of_tags1, longitude_2, latitude_2, number_of_tags2, firstTag, secondTag)
-TagSearch.plotMap(longitude_2, latitude_2, number_of_tags2, secondTag, 2)
+ 
+def main():
+    
+    ex = wx.App()
+    Example(None)
+    ex.MainLoop()    
+
+
+if __name__ == '__main__':
+    main() 
 

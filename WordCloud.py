@@ -43,17 +43,27 @@ def storesTags(lat, lng):
     return string
 
 
-"""
-YOUR_TEXT = "A tag cloud is a visual representation for text data, typically\
-used to depict keyword metadata on websites, or to visualize free form text."
-"""
-YOUR_TEXT = storesTags(37,122)
-tags = make_tags(get_tag_counts(YOUR_TEXT), maxsize=80)
+def openEastCoastCloud():
+    TEXT = storesTags(37,122)
+    tags = make_tags(get_tag_counts(TEXT), maxsize=80)
 
-create_tag_image(tags, 'cloud_large.png', size=(900, 600), fontname='Lobster')
+    create_tag_image(tags, 'cloud_large.png', size=(900, 600), fontname='Lobster')
 
-import webbrowser
-webbrowser.open('cloud_large.png') # see results
+    import webbrowser
+    webbrowser.open('cloud_large.png') # see results
+
+def openWestCoastCloud():
+    TEXT = storesTags(34,118) #Los Angeles
+    TEXT += storesTags(37,122) # San Francisco 
+
+    tags = make_tags(get_tag_counts(TEXT), maxsize=80)
+
+    create_tag_image(tags, 'cloud_large.png', size=(900, 600), fontname='Lobster')
+
+    import webbrowser
+    webbrowser.open('cloud_large.png') # see results
+
+openWestCoastCloud()
 
 
 
