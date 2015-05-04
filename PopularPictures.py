@@ -1,7 +1,9 @@
 from instagram.client import InstagramAPI
 import urllib
 import os
+import platform
 
+system = platform.system()
 
 def createImageFiles():
 	api = InstagramAPI(client_id='7f674565db0d42ed9b4dd4f366db65be', client_secret='9a5f5c38eec74eff9f479e3659d4824f')
@@ -10,9 +12,14 @@ def createImageFiles():
 	for media in popular_media:
 		url =  media.images['standard_resolution'].url
     	urllib.urlretrieve(url, "file"+ str(i) +".jpg")
-    	i += 1 
+    	i += 1
 
-def openWebPage():
-
+def uploadPhotos():
 	for x in range(20):
 		os.system("scp file" + str(x) + ".jpg gradinsk@radinsky.me:/var/www/html/205/img/")
+
+def openWebPage():
+	if(system == "Darwin"):
+		os.system("open http://" + data)
+	elif(system == "Linux"):
+		os.system("xdg-open http://" + data + "&")
