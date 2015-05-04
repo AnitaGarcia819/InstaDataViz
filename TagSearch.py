@@ -46,7 +46,7 @@ def get_marker_color(tagColor):
     # Returns green for smaller amounts of tags, yellow for moderate
     #  amounts of tags, and red for significant tags.
     if tagColor == 1:
-        return ('go') 
+        return ('go')
     else:
         return ('ro')
 
@@ -92,22 +92,22 @@ def showTagsonMap():
 
     #Appends latitude into "latitude_1"
 
-    for x in range(1): #Testing with '1', change to 30 
+    for x in range(1): #Testing with '1', change to 30
         points = gatherLatitude(firstTag)
         for data in points:
             latitude_1.append(data)
 
-    for x in range(1): #Testing with '1', change to 30 
+    for x in range(1): #Testing with '1', change to 30
         points = gatherLongitude(firstTag)
         for data in points:
             longitude_1.append(data)
 
-    for x in range(1): #Testing with '1', change to 30 
+    for x in range(1): #Testing with '1', change to 30
         points = gatherLatitude(secondTag)
         for data in points:
             latitude_2.append(data)
 
-    for x in range(1): #Testing with '1', change to 30 
+    for x in range(1): #Testing with '1', change to 30
         points = gatherLongitude(secondTag)
         for data in points:
             longitude_2.append(data)
@@ -137,8 +137,7 @@ def buttonCall():
     firstTag = ask(message = 'What is your name?')
     print 'Your name was', firstTag
 
-    secondTag = ask(message = 'What is your name?')
-    print 'Your name was', secondTag
+    #secondTag = ask(message = 'What is your name?')
+    #print 'Your name was', secondTag
 
 buttonCall()
-

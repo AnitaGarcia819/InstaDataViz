@@ -11,8 +11,8 @@ def createImageFiles():
 	i = 0
 	for media in popular_media:
 		url =  media.images['standard_resolution'].url
-    	urllib.urlretrieve(url, "file"+ str(i) +".jpg")
-    	i += 1
+		urllib.urlretrieve(url, "file"+ str(i) +".jpg")
+		i += 1
 
 def uploadPhotos():
 	for x in range(20):
