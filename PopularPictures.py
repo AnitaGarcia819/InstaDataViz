@@ -20,6 +20,6 @@ def uploadPhotos():
 
 def openWebPage():
 	if(system == "Darwin"):
-		os.system("open http://" + data)
+		os.system("open http://radinsky.me/205")
 	elif(system == "Linux"):
-		os.system("xdg-open http://" + data + "&")
+		os.system("xdg-open http://radinsky.me/205/ &")
