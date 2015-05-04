@@ -9,11 +9,11 @@
 
 import TagSearch
 import WordCloud
-#import wx
+import wx
 
-WordCloud.testCloud()
 
-'''
+
+
 class Example(wx.Frame):
            
     def __init__(self, *args, **kw):
@@ -50,9 +50,10 @@ class Example(wx.Frame):
     	TagSearch.showTagsonMap()
     def PopularPictures(self, event):
         PopularPictures.openWebPage()
-	def EastCoast(self, event):
-
-	def WestCoast(self, event):
+    def EastCoast(self, event):
+        WordCloud.openEastCoastCloud()
+    def WestCoast(self, event):
+        WordCloud.openWestCoastCloud()
     def OnQuitApp(self, event):
     	self.Close()
 
@@ -66,5 +67,4 @@ def main():
 
 if __name__ == '__main__':
     main() 
-'''
 

@@ -44,7 +44,11 @@ def storesTags(lat, lng):
 
 
 def openEastCoastCloud():
-    TEXT = storesTags(37,122)
+    TEXT = storesTags(40, 73) #New York City 
+    TEXT += ' ' + storesTags(30, 81) #Chicago
+    TEXT += ' ' + storesTags(39, 75)  #Philadelphia 
+
+
     tags = make_tags(get_tag_counts(TEXT), maxsize=80)
 
     create_tag_image(tags, 'cloud_large.png', size=(900, 600), fontname='Lobster')
@@ -70,6 +74,13 @@ def testCloud():
     print "S.F: " + TEXT
     TEXT += ' ' + storesTags(47,122) #Seattle 
     print "Seattle: " + TEXT
+
+    TEXT = storesTags(40, 73) #New York City 
+    print "NYC: " + TEXT
+    TEXT += ' ' + storesTags(25, 80) # Miami
+    print "Chicago: " + TEXT
+    TEXT += ' ' + storesTags(38, 77) #Washington D.C.
+    print "Philadelphia: " + TEXT
 
 
 
