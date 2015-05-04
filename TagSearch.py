@@ -15,6 +15,7 @@ from  urllib import urlopen
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
+import wx
 
 
 def gatherLatitude(tag):
@@ -118,4 +119,26 @@ def showTagsonMap():
     plotMap(longitude_1, latitude_1, longitude_2, latitude_2, firstTag, secondTag)
    # plotMap(longitude_2, latitude_2, secondTag, 2)
 
+# Initialize wx App
+app = wx.App()
+app.MainLoop()
+
+def ask(parent=None, message='', default_value=''):
+    dlg = wx.TextEntryDialog(parent, message, defaultValue=default_value)
+    dlg.ShowModal()
+    result = dlg.GetValue()
+    dlg.Destroy()
+    return result
+
+
+def buttonCall():
+
+    # Call Dialog
+    firstTag = ask(message = 'What is your name?')
+    print 'Your name was', x
+
+    secondTag = ask(message = 'What is your name?')
+    print 'Your name was', x
+
+buttonCall()
 
