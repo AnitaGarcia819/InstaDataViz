@@ -40,8 +40,8 @@ class Example(wx.Frame):
 
         # GUI Aesthetics 
         self.SetSize((220, 300))
-        self.SetBackgroundColour("blue")
-        self.SetTitle("Speech Recognition")
+        self.SetBackgroundColour("black")
+        self.SetTitle("Instagram Data ")
         self.Center()
         self.Show(True)
     
