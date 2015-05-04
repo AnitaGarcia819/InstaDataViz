@@ -8,6 +8,7 @@
 # through the GUI
 
 import TagSearch
+import PopularPictures
 import WordCloud
 import wx
 
