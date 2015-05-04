@@ -135,10 +135,10 @@ def buttonCall():
 
     # Call Dialog
     firstTag = ask(message = 'What is your name?')
-    print 'Your name was', x
+    print 'Your name was', firstTag
 
     secondTag = ask(message = 'What is your name?')
-    print 'Your name was', x
+    print 'Your name was', secondTag
 
 buttonCall()
 
