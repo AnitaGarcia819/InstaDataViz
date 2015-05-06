@@ -45,9 +45,10 @@ def storesTags(lat, lng):
 
 def openEastCoastCloud():
     TEXT = storesTags(40, 73) #New York City 
-    TEXT += ' ' + storesTags(30, 81) #Chicago
-    TEXT += ' ' + storesTags(39, 75)  #Philadelphia 
-
+    TEXT += ' ' + storesTags(42.3744, 71.1169) #Harvard
+    TEXT += ' ' + storesTags(42.3598, 71.0921)  #MIT
+    TEXT = storesTags(38.9072, 77.0728) #GeorgeTown University 
+    TEXT += ' ' + storesTags(42.3496, 71.0997) #Boston University
 
     tags = make_tags(get_tag_counts(TEXT), maxsize=80)
 

@@ -17,6 +17,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import wx
 
+app = wx.App()
+app.MainLoop()
 
 def gatherLatitude(tag):
     file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
@@ -79,8 +81,10 @@ def plotMap(longitude1, latitude1, longitude2, latitude2, tag1, tag2):
     plt.show()
 
 def showTagsonMap():
-    firstTag= raw_input("Enter Tag: ")
-    secondTag= raw_input("Enter Tag: ")
+    firstTag= buttonCall()
+    #raw_input("Enter Tag: ")
+    secondTag= buttonCall()
+    #raw_input("Enter Tag: ")
 
     #Stores data for first tag
     latitude_1= []
@@ -120,8 +124,7 @@ def showTagsonMap():
    # plotMap(longitude_2, latitude_2, secondTag, 2)
 
 # Initialize wx App
-app = wx.App()
-app.MainLoop()
+
 
 def ask(parent=None, message='', default_value=''):
     dlg = wx.TextEntryDialog(parent, message, defaultValue=default_value)
@@ -134,10 +137,17 @@ def ask(parent=None, message='', default_value=''):
 def buttonCall():
 
     # Call Dialog
-    firstTag = ask(message = 'What is your name?')
-    print 'Your name was', firstTag
+    #tag = ask(message = 'What is your name?')
+    #return tag
+    dlg = wx.TextEntryDialog(None,'Which tag would you like to enter?','InstaDataViz', 'Enter text here')
+         # This function returns the button pressed to close the dialog
+    ret = dlg.ShowModal()
+        # Let's check if user clicked OK or pressed ENTER
+    #if ret == wx.ID_OK:
+        
+    dlg.Destroy()
+    return dlg.GetValue()
+    
 
-    #secondTag = ask(message = 'What is your name?')
-    #print 'Your name was', secondTag
 
-buttonCall()
+
