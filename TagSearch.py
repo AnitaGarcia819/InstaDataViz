@@ -1,10 +1,16 @@
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # File name: TagSearch.py
 # Authors: Anita & Gabriel Radinsky
 # Created: 4/2015
-# Description: This file will extract two recent
-# tags from instagram. This data will be given
-# in a JSON format and then be visualized to compare
-# the difference in usage.
+# Description: This file will vizulaize the locations of two Instagram trending tags 
+#              the user wishes to search for. Two tags will be ploted on 
+#              a geographical map in different colors to represent where each 
+#              tag was posted. The tag data is being pulled from instagram using 
+#              Instagram API's endpoints. The latitude and longitude used will be 
+#              extracted from a JSON file profuced by the API endpoint. 
+#              
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 import TagSearch
 import time
 from instagram.client import InstagramAPI
@@ -17,10 +23,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import wx
 
+# Initialize wx App
 app = wx.App()
 app.MainLoop()
 
 def gatherLatitude(tag):
+    '''
+    Gathers Latitude coordianates from the JSON file produced
+    by the Instagram's API endpoints. The 'tag' being passed in will 
+    narrow the search to return all latitudes coordinates gathered from 
+    the JSON file. 
+    '''
+
     file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
     data = json.loads(file)
     latitude = []
@@ -32,6 +46,12 @@ def gatherLatitude(tag):
 
     return latitude
 def gatherLongitude(tag):
+    '''
+    Gathers longitude coordianates from the JSON file produced
+    by the Instagram's API endpoints. The 'tag' being passed in will 
+    narrow the search to return all longitude coordinates gathered from 
+    the JSON file. 
+    '''
     file = urlopen("https://api.instagram.com/v1/tags/"+ tag+"/media/recent?access_token=231920771.7f67456.bfe24e8a256d4d5ca2e2131d56b7103b").read()
     data = json.loads(file)
 
@@ -44,15 +64,20 @@ def gatherLongitude(tag):
     return longitude
 
 
-def get_marker_color(tagColor):
-    # Returns green for smaller amounts of tags, yellow for moderate
-    #  amounts of tags, and red for significant tags.
-    if tagColor == 1:
+def get_marker_color(tagNumber):
+    '''
+    Returns green for the first tag and red for the second tag. 
+    '''
+    if tagNumber == 1:
         return ('go')
     else:
         return ('ro')
 
 def plotMap(longitude1, latitude1, longitude2, latitude2, tag1, tag2):
+    '''
+    Plots tag points on their appropriate latitude and longitude 
+    coordinates on the world map. 
+    '''
     map = Basemap(projection='robin', resolution = 'l', area_thresh = 1000.0,
               lat_0=0, lon_0=-130)
     map.drawcoastlines()
@@ -81,10 +106,10 @@ def plotMap(longitude1, latitude1, longitude2, latitude2, tag1, tag2):
     plt.show()
 
 def showTagsonMap():
-    firstTag= buttonCall()
-    #raw_input("Enter Tag: ")
-    secondTag= buttonCall()
-    #raw_input("Enter Tag: ")
+
+    #Asks user for input
+    firstTag= userInput()
+    secondTag= userInput()
 
     #Stores data for first tag
     latitude_1= []
@@ -95,7 +120,6 @@ def showTagsonMap():
     longitude_2= []
 
     #Appends latitude into "latitude_1"
-
     for x in range(1): #Testing with '1', change to 30
         points = gatherLatitude(firstTag)
         for data in points:
@@ -123,30 +147,18 @@ def showTagsonMap():
     plotMap(longitude_1, latitude_1, longitude_2, latitude_2, firstTag, secondTag)
    # plotMap(longitude_2, latitude_2, secondTag, 2)
 
-# Initialize wx App
-
-
-def ask(parent=None, message='', default_value=''):
-    dlg = wx.TextEntryDialog(parent, message, defaultValue=default_value)
-    dlg.ShowModal()
-    result = dlg.GetValue()
-    dlg.Destroy()
-    return result
-
-
-def buttonCall():
-
-    # Call Dialog
-    #tag = ask(message = 'What is your name?')
-    #return tag
+def userInput():
+    '''
+    Takes user input via a dialog pop up and returns whatever the user input. 
+    '''
     dlg = wx.TextEntryDialog(None,'Which tag would you like to enter?','InstaDataViz', 'Enter text here')
          # This function returns the button pressed to close the dialog
-    ret = dlg.ShowModal()
-        # Let's check if user clicked OK or pressed ENTER
-    #if ret == wx.ID_OK:
-        
+    dlg.ShowModal()
+        # This function will destory the dialog.   
     dlg.Destroy()
+
     return dlg.GetValue()
+
     
 
 

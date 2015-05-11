@@ -1,3 +1,13 @@
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# File name: PopularPictures.py
+# Authors: Anita & Gabriel Radinsky
+# Created: 4/2015
+# Description: This program will run the entire program. A Graphical User Interface
+#              (GUI) will be used to display the options available to the user. 
+#              The user will select which feature of the program he/she wishes to run
+#              via the list of buttons.  
+#          
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 from instagram.client import InstagramAPI
 import urllib
 import os

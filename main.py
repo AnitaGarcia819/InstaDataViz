@@ -1,11 +1,13 @@
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # File name: main.py
 # Authors: Anita & Gabriel Radinsky
 # Created: 4/2015
-# Description: This program will run the
-# InstaDataViz program. It will allow
-# the user select which feature
-# of the program the user would like to selecc
-# through the GUI
+# Description: This program will run the entire program. A Graphical User Interface
+#              (GUI) will be used to display the options available to the user. 
+#              The user will select which feature of the program he/she wishes to run
+#              via the list of buttons.  
+#          
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 import TagSearch
 import PopularPictures
@@ -13,6 +15,13 @@ import WordCloud
 import wx
 
 class Example(wx.Frame):
+    '''
+    This is the graphical user interface of the 
+    program. The design is a simple box with buttons.
+    Each button corresponds to its respective function. Upon
+    being clicked on, it will execute the appropriate function call. 
+
+    '''
            
     def __init__(self, *args, **kw):
         super(Example, self).__init__(*args, **kw) 
@@ -33,7 +42,6 @@ class Example(wx.Frame):
         self.button2.Bind(wx.EVT_BUTTON, self.PopularPictures)
         self.button3.Bind(wx.EVT_BUTTON, self.EastCoast)
         self.button4.Bind(wx.EVT_BUTTON, self.WestCoast)
-
     	self.button9.Bind(wx.EVT_BUTTON, self.OnQuitApp)
 
         # GUI Aesthetics 
@@ -57,6 +65,9 @@ class Example(wx.Frame):
 
  
 def main():
+    '''
+    Runs the GUI
+    '''
     
     ex = wx.App()
     Example(None)
