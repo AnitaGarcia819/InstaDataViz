@@ -13,8 +13,9 @@ import os
 import platform
 
 system = platform.system()
-
-#Queries the API to get the currently trending images
+'''
+Queries the API to get the currently trending images
+'''
 def createImageFiles():
 	api = InstagramAPI(client_id='7f674565db0d42ed9b4dd4f366db65be', client_secret='9a5f5c38eec74eff9f479e3659d4824f')
 	popular_media = api.media_popular(count=20)
@@ -24,8 +25,9 @@ def createImageFiles():
 		url =  media.images['standard_resolution'].url
 		urllib.urlretrieve(url, "file"+ str(i) +".jpg")
 		i += 1
-
-#Uploads all pictures to a remote webhost and removes all previous pictures
+'''
+Uploads all pictures to a remote webhost and removes all previous pictures
+'''
 def uploadPhotos():
 	for x in range(20):
 		os.system("scp file" + str(x) + ".jpg gradinsk@radinsky.me:/var/www/html/205/img/")
