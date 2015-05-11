@@ -106,6 +106,9 @@ def plotMap(longitude1, latitude1, longitude2, latitude2, tag1, tag2):
     plt.show()
 
 def showTagsonMap():
+    '''
+    Asks user for input, gathers data, and plots points. 
+    '''
 
     #Asks user for input
     firstTag= userInput()
@@ -120,22 +123,22 @@ def showTagsonMap():
     longitude_2= []
 
     #Appends latitude into "latitude_1"
-    for x in range(1): #Testing with '1', change to 30
+    for x in range(1): # Can change 1 to larger number to gather more data. 
         points = gatherLatitude(firstTag)
         for data in points:
             latitude_1.append(data)
 
-    for x in range(1): #Testing with '1', change to 30
+    for x in range(1): # Can change 1 to larger number to gather more data. 
         points = gatherLongitude(firstTag)
         for data in points:
             longitude_1.append(data)
 
-    for x in range(1): #Testing with '1', change to 30
+    for x in range(1): # Can change 1 to larger number to gather more data. 
         points = gatherLatitude(secondTag)
         for data in points:
             latitude_2.append(data)
 
-    for x in range(1): #Testing with '1', change to 30
+    for x in range(1): # Can change 1 to larger number to gather more data. 
         points = gatherLongitude(secondTag)
         for data in points:
             longitude_2.append(data)
@@ -145,7 +148,6 @@ def showTagsonMap():
         print "No data trending for second tag"
 
     plotMap(longitude_1, latitude_1, longitude_2, latitude_2, firstTag, secondTag)
-   # plotMap(longitude_2, latitude_2, secondTag, 2)
 
 def userInput():
     '''
