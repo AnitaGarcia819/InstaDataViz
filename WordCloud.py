@@ -55,11 +55,11 @@ def openEastCoastCloud():
     '''
 
     #Stores tags from multiple cities into one text string. 
-    TEXT = storesTags(40, 73) #New York City 
-    TEXT += ' ' + storesTags(42.3744, 71.1169) #Harvard
-    TEXT += ' ' + storesTags(42.3598, 71.0921)  #MIT
-    TEXT = storesTags(38.9072, 77.0728) #GeorgeTown University 
-    TEXT += ' ' + storesTags(42.3496, 71.0997) #Boston University
+    TEXT = getTags(40, 73) #New York City 
+    TEXT += ' ' + getTags(42.3744, 71.1169) #Harvard
+    TEXT += ' ' + getTags(42.3598, 71.0921)  #MIT
+    TEXT = getTags(38.9072, 77.0728) #GeorgeTown University 
+    TEXT += ' ' + getTags(42.3496, 71.0997) #Boston University
     #Draws Word Cloud 
     tags = make_tags(get_tag_counts(TEXT), maxsize=80)
     #Creates Word Cloud File 
